@@ -13,3 +13,4 @@
 ///// To Run /////
 - Open Terminal 
 - python agent.py (can interact in the terminal)
+- control C will exit you from the communication
