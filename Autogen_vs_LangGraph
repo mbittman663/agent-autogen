@@ -1,0 +1,20 @@
+**Autogen vs. LangGraph Core Philosophies**
+
+| Feature       | Autogen                                                                                                      | LangGraph                                                                                |
+| ------------- | ------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
+| Design        | Focuses on **multi-agent collaboration**; “agents talk to each other” with a controller orchestrating tasks. | Focuses on **chained agentic workflows**; nodes are executed sequentially or as a graph. |
+| State         | Often agent-centric: each agent can maintain its own memory and reasoning.                                   | Graph-centric: a **state dictionary flows through nodes**, updated at each step.         |
+| Orchestration | Uses an **executor/controller** to manage agents and messages.                                               | Uses **StateGraph** to manage nodes, entry points, and edges.                            |
+| Complexity    | Higher for multi-agent setups, especially with dynamic conversations.                                        | Lower for sequential or branching workflows; easier to visualize.                        |
+
+
+**Pros & Cons**
+| Aspect                        | Autogen                                                                                   | LangGraph                                                                              |
+| ----------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| **Ease of Setup**             | Moderate; requires defining multiple agents and communication logic.                      | Easier for simple chains; one state dictionary passes through nodes.                   |
+| **Flexibility**               | High; great for simulating conversations, debates, or multiple AI roles.                  | High for structured workflows, but less natural for “chatty multi-agent interactions”. |
+| **Memory Handling**           | Built-in support for agent-specific memory, conversation history.                         | Can implement memory manually (local JSON or LangChain memory wrappers).               |
+| **Debugging / Observability** | Can be tricky because multiple agents are talking asynchronously.                         | Easier to debug; history is stored in state and can be printed step by step.           |
+| **Use of External Tools**     | Agents can call APIs or tools, but you need to implement tool access in each agent.       | Node-based tool usage is easy; just call a Python function inside a node.              |
+| **Visualization**             | Limited built-in visualization.                                                           | Graph is more explicit; easier to see node flow and edges.                             |
+| **Cost / API Calls**          | Can generate more API calls if multiple agents are “talking” to each other for reasoning. | Fewer API calls for sequential chains; one call per node.                              |
