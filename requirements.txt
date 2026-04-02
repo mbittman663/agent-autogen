@@ -1,0 +1,4 @@
+autogen-agentchat==0.7.5
+autogen-ext[openai]==0.7.5
+openai
+python-dotenv
